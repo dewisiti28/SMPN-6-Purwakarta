@@ -54,8 +54,16 @@ body {
     color: white;
 }
 
-.logo-text h2 { color: white; font-size: 16px; font-weight: 700; }
-.logo-text p { color: #cbd5e1; font-size: 11px; }
+.logo-text h2 {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.logo-text p {
+    color: #cbd5e1;
+    font-size: 11px;
+}
 
 .nav-item {
     display: flex;
@@ -70,22 +78,37 @@ body {
     transition: 0.3s;
 }
 
-.nav-item.active { background: var(--cyan); color: white; }
-.nav-item:hover:not(.active) { color: white; background: rgba(255,255,255,0.05); }
+.nav-item.active {
+    background: var(--cyan);
+    color: white;
+}
 
-.admin-link { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+.nav-item:hover:not(.active) {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.admin-link {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
 
 /* --- MAIN CONTENT --- */
-main { margin-left: 260px; }
+main {
+    margin-left: 260px;
+}
 
 /* HERO */
 .hero {
     /* Menggunakan overlay gradien agar teks tetap terbaca jelas */
-    background: linear-gradient(135deg, rgba(10, 38, 95, 0.8) 0%, rgba(16, 64, 163, 0.7) 100%), 
-                url('spensix.jpg');
-    
-    background-size: cover;      /* Memastikan gambar menutupi seluruh area */
-    background-position: center;  /* Memastikan gambar berada di tengah */
+    background: linear-gradient(135deg, rgba(10, 38, 95, 0.8) 0%, rgba(16, 64, 163, 0.7) 100%),
+        url('spensix.jpg');
+
+    background-size: cover;
+    /* Memastikan gambar menutupi seluruh area */
+    background-position: center;
+    /* Memastikan gambar berada di tengah */
     background-repeat: no-repeat;
     padding: 120px 80px;
     color: white;
@@ -101,35 +124,154 @@ main { margin-left: 260px; }
     display: inline-block;
 }
 
-.hero h1 { font-size: 60px; font-weight: 800; line-height: 1.1; }
-.hero h1 span { display: block; }
-.hero .cyan-text { color: var(--light-cyan); }
+.hero h1 {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1.1;
+}
 
-.hero p { max-width: 600px; margin: 30px 0; color: #e2e8f0; font-size: 18px; line-height: 1.6; }
+.hero h1 span {
+    display: block;
+}
 
-.btn-group { display: flex; gap: 15px; }
-.btn { padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; }
-.btn-primary { background: var(--cyan); color: white; }
-.btn-primary:hover { background: #0087c2; }
-.btn-outline { border: 1px solid rgba(255,255,255,0.3); color: white; }
-.btn-outline:hover { background: rgba(255,255,255,0.1); }
+.hero .cyan-text {
+    color: var(--light-cyan);
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 30px 0;
+    color: #e2e8f0;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--cyan);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0087c2;
+}
+
+.btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
 
 /* SAMBUTAN */
-.sambutan { padding: 100px 80px; display: flex; align-items: center; gap: 70px; background: white; }
-.photo-container { position: relative; flex-shrink: 0; }
-.blue-box { width: 400px; height: 400px; background: linear-gradient(to bottom right, var(--blue), var(--cyan)); border-radius: 40px; display: flex; justify-content: center; align-items: flex-end; overflow: hidden; }
-.avatar-img { width: 100%; height: 100%; object-fit: cover; } /* Menampilkan kepsek.jpg */
-.floating-cap { position: absolute; bottom: -20px; right: -20px; background: var(--yellow); width: 85px; height: 85px; border-radius: 20px; border: 6px solid white; display: flex; justify-content: center; align-items: center; color: white; font-size: 32px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+.sambutan {
+    padding: 100px 80px;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    background: white;
+}
 
-.label-top { display: flex; align-items: center; gap: 10px; color: var(--blue); margin-bottom: 20px; }
-.label-top h4 { letter-spacing: 2px; font-size: 13px; }
-.quote-text { font-size: 24px; font-style: italic; color: var(--text-gray); line-height: 1.6; margin-bottom: 30px; }
-.profile-signature { border-left: 4px solid var(--blue); padding-left: 20px; }
+.photo-container {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.blue-box {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(to bottom right, var(--blue), var(--cyan));
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Menampilkan kepsek.jpg */
+.floating-cap {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--yellow);
+    width: 85px;
+    height: 85px;
+    border-radius: 20px;
+    border: 6px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 32px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.label-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.label-top h4 {
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+.quote-text {
+    font-size: 24px;
+    font-style: italic;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.profile-signature {
+    border-left: 4px solid var(--blue);
+    padding-left: 20px;
+}
 
 /* WHY US & HOVER EFFECT */
-.why-us { padding: 100px 80px; text-align: center; }
-.section-header h2 { font-size: 38px; margin-bottom: 15px; }
-.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 50px; }
+.why-us {
+    padding: 100px 80px;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 50px;
+}
 
 .card {
     background: white;
@@ -137,35 +279,107 @@ main { margin-left: 260px; }
     border-radius: 30px;
     text-align: left;
     border: 2px solid transparent;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
 }
 
 /* --- EFEK HOVER BIRU KOTAK (SESUAI PERMINTAAN) --- */
 .card:hover {
-    background-color: #f0f9ff; /* Background biru muda kotak */
-    border-color: var(--cyan); /* Garis tepi biru cyan */
-    transform: translateY(-12px); /* Melayang sedikit */
-    box-shadow: 0 20px 40px rgba(0, 158, 226, 0.1); /* Bayangan biru halus */
+    background-color: #f0f9ff;
+    /* Background biru muda kotak */
+    border-color: var(--cyan);
+    /* Garis tepi biru cyan */
+    transform: translateY(-12px);
+    /* Melayang sedikit */
+    box-shadow: 0 20px 40px rgba(0, 158, 226, 0.1);
+    /* Bayangan biru halus */
 }
 
-.card-icon { background: var(--blue); width: 55px; height: 55px; border-radius: 12px; display: flex; justify-content: center; align-items: center; color: white; font-size: 22px; margin-bottom: 25px; transition: 0.3s; }
-.card:hover .card-icon { background: var(--cyan); transform: rotate(10deg); }
+.card-icon {
+    background: var(--blue);
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 22px;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+.card:hover .card-icon {
+    background: var(--cyan);
+    transform: rotate(10deg);
+}
 
 /* --- RESPONSIVE MOBILE --- */
-.mobile-header { display: none; }
+.mobile-header {
+    display: none;
+}
 
 @media (max-width: 1024px) {
-    .mobile-header { display: block; position: fixed; top: 20px; left: 20px; z-index: 1000; }
-    .menu-toggle { background: var(--blue); color: white; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; }
-    .sidebar { transform: translateX(-100%); }
-    .sidebar.active { transform: translateX(0); }
-    main { margin-left: 0; }
-    .hero { padding: 100px 30px 50px; }
-    .hero h1 { font-size: 36px; }
-    .sambutan { flex-direction: column; padding: 60px 30px; }
-    .blue-box { width: 100%; height: 320px; }
-    .card-grid { grid-template-columns: 1fr; }
-    .btn-group { flex-direction: column; }
+    .mobile-header {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+    }
+
+    /* Hide text when navbar is closed (user request) */
+    .mobile-logo-text {
+        display: none;
+    }
+
+    .menu-toggle {
+        background: var(--blue);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    main {
+        margin-left: 0;
+    }
+
+    .hero {
+        padding: 100px 30px 50px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .sambutan {
+        flex-direction: column;
+        padding: 60px 30px;
+    }
+
+    .blue-box {
+        width: 100%;
+        height: 320px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
 }

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeri - SMP Negeri 6 Purwakarta</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="galeri.css">
 </head>
+
 <body>
 
     <aside class="sidebar" id="sidebar">
@@ -22,7 +24,7 @@
                 <small>Purwakarta</small>
             </div>
         </div>
-        
+
         <nav class="nav-links">
             <a href="index.html" class="nav-item">
                 <i class="fas fa-home"></i> Beranda
@@ -42,7 +44,7 @@
         </nav>
 
         <div class="sidebar-footer">
-           
+
         </div>
     </aside>
 
@@ -58,7 +60,7 @@
 
         <div class="gallery-container">
             <h2 class="section-title">Pilih Kategori untuk Melihat Lebih Banyak Foto</h2>
-            
+
             <div class="category-grid">
                 <a href="galeri-fasilitas.html" class="category-card card-fasilitas">
                     <div class="card-icon">
@@ -89,7 +91,7 @@
 
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
-            
+
             // Ubah ikon bars menjadi times (X)
             const icon = menuToggle.querySelector('i');
             if (sidebar.classList.contains('active')) {
@@ -107,5 +109,9 @@
             }
         });
     </script>
+    <!-- Chatbot Integration -->
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="chatbot.js"></script>
 </body>
+
 </html>

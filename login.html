@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,89 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background: #f0f4f8; height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0; }
-        .login-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: 100%; max-width: 400px; text-align: center; }
-        .icon-box { width: 60px; height: 60px; background: #f0f7ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #1040a3; font-size: 24px; }
-        h2 { color: #0a265f; margin-bottom: 10px; }
-        p { color: #64748b; font-size: 14px; margin-bottom: 30px; }
-        .input-group { position: relative; margin-bottom: 20px; text-align: left; }
-        input { width: 100%; padding: 12px 15px; border: 1px solid #e2e8f0; border-radius: 10px; box-sizing: border-box; outline: none; transition: 0.3s; }
-        input:focus { border-color: #1040a3; box-shadow: 0 0 0 3px rgba(16, 64, 163, 0.1); }
-        .btn-login { width: 100%; padding: 12px; background: #1040a3; color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .btn-login:hover { background: #009ee2; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f4f8;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: #f0f7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #1040a3;
+            font-size: 24px;
+        }
+
+        h2 {
+            color: #0a265f;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #1040a3;
+            box-shadow: 0 0 0 3px rgba(16, 64, 163, 0.1);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: #1040a3;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #009ee2;
+        }
     </style>
 </head>
+
 <body>
     <div class="login-card">
         <div class="icon-box"><i class="fas fa-lock"></i></div>
@@ -41,5 +113,9 @@
             }
         }
     </script>
+    <!-- Chatbot Integration -->
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="chatbot.js"></script>
 </body>
+
 </html>

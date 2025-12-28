@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontak - SMP Negeri 6 Purwakarta</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="kontak.css">
 </head>
+
 <body>
 
     <aside class="sidebar" id="sidebar">
@@ -22,7 +24,7 @@
                 <small>Purwakarta</small>
             </div>
         </div>
-        
+
         <nav class="nav-links">
             <a href="index.html" class="nav-item">
                 <i class="fas fa-home"></i> Beranda
@@ -52,9 +54,20 @@
             <p>Kami siap membantu menjawab pertanyaan Anda seputar SMP Negeri 6 Purwakarta.</p>
         </header>
 
-        <div class="contact-container">
+        <div class="map-section"
+            style="width: 100%; max-width: 1200px; margin: 0 auto 40px; padding: 0 20px; box-sizing: border-box;">
+            <div style="border-radius: 16px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.031763198084!2d107.44453837499402!3d-6.539196993454359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e690e6044733335%3A0x6e3681423c347890!2sSMP%20Negeri%206%20Purwakarta!5e0!3m2!1sid!2sid!4v1703666666666!5m2!1sid!2sid"
+                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="contact-container" style="margin-top: 0;">
             <div class="contact-grid">
-                
+
                 <div class="contact-card">
                     <div class="icon-box">
                         <i class="fas fa-map-marker-alt"></i>
@@ -74,12 +87,12 @@
                     <a href="https://wa.me/6287778935359" target="_blank" class="wa-link">
                         <i class="fab fa-whatsapp"></i> 087778935359
                     </a>
-                    
+
                     <div class="hours-box">
                         <h4>Jam Operasional:</h4>
                         <ul class="hours-list">
                             <li><span>Senin - Jumat:</span> <strong>07:00 - 16:00</strong></li>
-                    
+
                             <li><span>Sabtu - Minggu:</span> <strong style="color: #ef4444;">Tutup</strong></li>
                         </ul>
                     </div>
@@ -116,11 +129,16 @@
         document.addEventListener('click', (e) => {
             if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
                 sidebar.classList.remove('active');
-                if(menuToggle.querySelector('i').classList.contains('fa-times')) {
+                if (menuToggle.querySelector('i').classList.contains('fa-times')) {
                     menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
                 }
             }
         });
     </script>
+
+    <!-- Chatbot Integration -->
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="chatbot.js"></script>
 </body>
+
 </html>

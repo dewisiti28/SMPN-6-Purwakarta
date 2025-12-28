@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berita - SMP Negeri 6 Purwakarta</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="berita.css">
 </head>
+
 <body>
 
     <aside class="sidebar" id="sidebar">
@@ -21,14 +23,14 @@
                 <p>Purwakarta</p>
             </div>
         </div>
-        
+
         <nav class="nav-links">
-           <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
-<a href="profil.html" class="nav-item"><i class="fas fa-user"></i> Profil</a>
-<a href="berita.html" class="nav-item active"><i class="fas fa-newspaper"></i> Berita</a>
-<a href="galeri.html" class="nav-item"><i class="fas fa-image"></i> Galeri</a>
-<a href="kontak.html" class="nav-item"><i class="fas fa-phone"></i> Kontak</a>
-            
+            <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="profil.html" class="nav-item"><i class="fas fa-user"></i> Profil</a>
+            <a href="berita.html" class="nav-item active"><i class="fas fa-newspaper"></i> Berita</a>
+            <a href="galeri.html" class="nav-item"><i class="fas fa-image"></i> Galeri</a>
+            <a href="kontak.html" class="nav-item"><i class="fas fa-phone"></i> Kontak</a>
+
         </nav>
     </aside>
 
@@ -56,19 +58,24 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
             <div id="modalBody">
-                </div>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
+
     <script src="berita.js"></script>
-    
+
     <script>
         // Fungsi sederhana untuk menu mobile
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
         }
     </script>
+
+    <!-- Chatbot Integration -->
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="chatbot.js"></script>
 </body>
+
 </html>
