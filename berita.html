@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita - SMP Negeri 6 Purwakarta</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="berita.css">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo-box">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="logo-text">
+                <h2>SMP Negeri 6</h2>
+                <p>Purwakarta</p>
+            </div>
+        </div>
+        
+        <nav class="nav-links">
+           <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+<a href="profil.html" class="nav-item"><i class="fas fa-user"></i> Profil</a>
+<a href="berita.html" class="nav-item active"><i class="fas fa-newspaper"></i> Berita</a>
+<a href="galeri.html" class="nav-item"><i class="fas fa-image"></i> Galeri</a>
+<a href="kontak.html" class="nav-item"><i class="fas fa-phone"></i> Kontak</a>
+            
+        </nav>
+    </aside>
+
+    <div class="mobile-header">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="mobile-logo-text">Berita SMPN 6</div>
+    </div>
+
+    <main>
+        <section class="berita-section section-padding">
+            <div class="berita-header">
+                <h1>Berita & Kegiatan</h1>
+                <p>Informasi terbaru seputar prestasi dan aktivitas sekolah</p>
+            </div>
+
+            <div class="berita-grid" id="newsGrid">
+                <p style="text-align: center; grid-column: 1/-1; padding: 50px;">Memuat berita terbaru...</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="newsModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div id="modalBody">
+                </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <script src="berita.js"></script>
+    
+    <script>
+        // Fungsi sederhana untuk menu mobile
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

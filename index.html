@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP Negeri 6 Purwakarta | Beranda</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="mobile-header">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="mobile-logo-text">SMPN 6 Purwakarta</div>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo-box">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="logo-text">
+                <h2>SMP Negeri 6</h2>
+                <p>Purwakarta</p>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item active">
+                <i class="fas fa-home"></i> Beranda
+            </a>
+            <a href="profil.html" class="nav-item">
+                <i class="fas fa-user"></i> Profil
+            </a>
+            <a href="berita.html" class="nav-item">
+                <i class="fas fa-newspaper"></i> Berita
+            </a>
+            <a href="galeri.html" class="nav-item">
+                <i class="fas fa-image"></i> Galeri
+            </a>
+            <a href="kontak.html" class="nav-item">
+                <i class="fas fa-phone"></i> Kontak
+            </a>
+        </nav>
+
+    </aside>
+
+    <main>
+        
+        <section class="hero">
+            <div class="hero-badge">
+                <i class="fas fa-star" style="color: #fbbf24;"></i> Sekolah Unggulan Terakreditasi A
+            </div>
+            <h1>
+                <span>Membangun</span>
+                <span>Generasi</span>
+                <span class="cyan-text">Cerdas & Berakhlak</span>
+            </h1>
+            <p>
+                SMP Negeri 6 Purwakarta berkomitmen untuk memberikan pendidikan berkualitas yang 
+                membentuk karakter dan kompetensi siswa untuk masa depan yang gemilang.
+            </p>
+            <div class="btn-group">
+                <a href="profil.html" class="btn btn-primary">
+                    Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="kontak.html" class="btn btn-outline">Hubungi Kami</a>
+            </div>
+        </section>
+
+        <section class="sambutan">
+            <div class="photo-container">
+                <div class="blue-box">
+                    <img src="kepsek.jpg" alt="Kepala Sekolah SMPN 6 Purwakarta" class="avatar-img">
+                </div>
+                <div class="floating-cap">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+            </div>
+            <div class="sambutan-content">
+                <div class="label-top">
+                    <i class="fas fa-quote-left"></i>
+                    <h4>SAMBUTAN KEPALA SEKOLAH</h4>
+                </div>
+                <p class="quote-text">
+                    "Selamat datang di SMP Negeri 6 Purwakarta. Sebagai institusi pendidikan yang berkomitmen pada keunggulan, kami berupaya membentuk generasi muda yang tidak hanya cerdas secara akademik, tetapi juga memiliki karakter yang kuat dan berakhlak mulia."
+                </p>
+                <div class="profile-signature">
+                    <h3>R. Gurnita Wijaksana, S.Pd.</h3>
+                    <p>Kepala Sekolah</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-us">
+            <div class="section-header">
+                <h2>Mengapa Memilih Kami?</h2>
+                <p>Kami menyediakan lingkungan belajar yang kondusif dengan berbagai keunggulan</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Kurikulum Modern</h3>
+                    <p>Menerapkan kurikulum terkini yang sesuai dengan perkembangan zaman dan kebutuhan industri.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-desktop"></i></div>
+                    <h3>Fasilitas Lengkap</h3>
+                    <p>Laboratorium komputer, perpustakaan digital, dan ruang kelas yang nyaman untuk mendukung KBM.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <h3>Ekstrakurikuler</h3>
+                    <p>Berbagai kegiatan ekstrakurikuler untuk mengembangkan bakat dan minat siswa di luar akademik.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Fungsi untuk buka-tutup menu di tampilan HP
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Menutup sidebar otomatis jika link diklik (opsional)
+        const navLinks = document.querySelectorAll('.nav-item');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 1024) {
+                    document.getElementById('sidebar').classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

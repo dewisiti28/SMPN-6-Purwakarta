@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - SMP Negeri 6 Purwakarta</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="galeri.css">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="logo-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div>
+                <strong>SMP Negeri 6</strong>
+                <small>Purwakarta</small>
+            </div>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i> Beranda
+            </a>
+            <a href="profil.html" class="nav-item">
+                <i class="fas fa-user"></i> Profil
+            </a>
+            <a href="berita.html" class="nav-item">
+                <i class="fas fa-newspaper"></i> Berita
+            </a>
+            <a href="galeri.html" class="nav-item active">
+                <i class="fas fa-image"></i> Galeri
+            </a>
+            <a href="kontak.html" class="nav-item">
+                <i class="fas fa-phone"></i> Kontak
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+           
+        </div>
+    </aside>
+
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <main class="main-content">
+        <header class="header-section">
+            <h1>Galeri Foto</h1>
+            <p>Dokumentasi kegiatan dan fasilitas SMP Negeri 6 Purwakarta</p>
+        </header>
+
+        <div class="gallery-container">
+            <h2 class="section-title">Pilih Kategori untuk Melihat Lebih Banyak Foto</h2>
+            
+            <div class="category-grid">
+                <a href="galeri-fasilitas.html" class="category-card card-fasilitas">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Fasilitas</h3>
+                        <p>6 Foto</p>
+                    </div>
+                </a>
+
+                <a href="galeri-ekskul.html" class="category-card card-ekskul">
+                    <div class="card-icon">
+                        <i class="fas fa-campground"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Ekstrakurikuler</h3>
+                        <p>6 Foto</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            
+            // Ubah ikon bars menjadi times (X)
+            const icon = menuToggle.querySelector('i');
+            if (sidebar.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        // Tutup sidebar jika klik di luar area sidebar
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebar.classList.remove('active');
+                menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>

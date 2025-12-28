@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - SMP Negeri 6 Purwakarta</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="kontak.css">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="logo-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div>
+                <strong>SMP Negeri 6</strong>
+                <small>Purwakarta</small>
+            </div>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i> Beranda
+            </a>
+            <a href="profil.html" class="nav-item">
+                <i class="fas fa-user"></i> Profil
+            </a>
+            <a href="berita.html" class="nav-item">
+                <i class="fas fa-newspaper"></i> Berita
+            </a>
+            <a href="galeri.html" class="nav-item">
+                <i class="fas fa-image"></i> Galeri
+            </a>
+            <a href="kontak.html" class="nav-item active">
+                <i class="fas fa-phone"></i> Kontak
+            </a>
+        </nav>
+    </aside>
+
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <main class="main-content">
+        <header class="header-section">
+            <h1>Hubungi Kami</h1>
+            <p>Kami siap membantu menjawab pertanyaan Anda seputar SMP Negeri 6 Purwakarta.</p>
+        </header>
+
+        <div class="contact-container">
+            <div class="contact-grid">
+                
+                <div class="contact-card">
+                    <div class="icon-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Alamat</h3>
+                    <p>Jl. Purnawarman Barat, Sindangkasih, Kec. Purwakarta, Kab. Purwakarta, Jawa Barat 41112</p>
+                    <a href="https://maps.app.goo.gl/ETpBFdiTFLhMn4798" target="_blank" class="btn-action-link">
+                        Lihat di Google Maps <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon-box">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>Telepon & WA</h3>
+                    <a href="https://wa.me/6287778935359" target="_blank" class="wa-link">
+                        <i class="fab fa-whatsapp"></i> 087778935359
+                    </a>
+                    
+                    <div class="hours-box">
+                        <h4>Jam Operasional:</h4>
+                        <ul class="hours-list">
+                            <li><span>Senin - Jumat:</span> <strong>07:00 - 16:00</strong></li>
+                    
+                            <li><span>Sabtu - Minggu:</span> <strong style="color: #ef4444;">Tutup</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon-box">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p class="email-text">smpn6purwakarta@gmail.com</p>
+                    <p style="font-size: 14px; opacity: 0.7; margin-top: 15px;">Respon dalam 1x24 jam</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (sidebar.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        // Menutup sidebar jika mengklik di luar sidebar
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebar.classList.remove('active');
+                if(menuToggle.querySelector('i').classList.contains('fa-times')) {
+                    menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Fasilitas - SMP Negeri 6 Purwakarta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="galeri.css">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="brand-text"><strong>SMP Negeri 6</strong><small>Purwakarta</small></div>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="profil.html" class="nav-item"><i class="fas fa-user"></i> Profil</a>
+            <a href="berita.html" class="nav-item"><i class="fas fa-newspaper"></i> Berita</a>
+            <a href="galeri.html" class="nav-item active"><i class="fas fa-image"></i> Galeri</a>
+            <a href="kontak.html" class="nav-item"><i class="fas fa-phone"></i> Kontak</a>
+        </nav>
+    </aside>
+
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+
+    <main class="main-content">
+        <header class="header-section">
+            <a href="galeri.html" style="color: white; text-decoration: none; font-size: 14px; opacity: 0.8;">
+                <i class="fas fa-arrow-left"></i> Kembali ke Kategori
+            </a>
+            <h1 style="margin-top: 15px;">Fasilitas Sekolah</h1>
+            <p>Sarana prasarana pendukung KBM</p>
+        </header>
+
+        <div class="gallery-container">
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <img src="f1.jpg" alt="Ruang Kelas">
+                    <div class="photo-info"><h3>Ruang Kelas</h3></div>
+                </div>
+                <div class="photo-card">
+                    <img src="f2.jpg" alt="Lab Komputer">
+                    <div class="photo-info"><h3>Lab</h3></div>
+                </div>
+                <div class="photo-card">
+                    <img src="f3.jpg" alt="Ruang Ekskul">
+                    <div class="photo-info"><h3>Ruang Ekskul</h3></div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder"><img src="f4.jpg" alt="UKS"></div>
+                    <div class="photo-info"><h3>UKS</h3></div>
+                </div>
+                <div class="photo-card">
+                    <img src="f5.jpg" alt="Perpustakaan">
+                    <div class="photo-info"><h3>Perpustakaan</h3></div>
+                </div>
+                <div class="photo-card">
+                    <img src="f6.jpg" alt="Masjid">
+                    <div class="photo-info"><h3>Masjid</h3></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>
