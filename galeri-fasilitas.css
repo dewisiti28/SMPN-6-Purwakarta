@@ -1,0 +1,130 @@
+/* --- VARIABLES --- */
+:root {
+    --primary-dark: #0b2e7a; /* Biru sidebar tetap konsisten */
+    --accent-blue: #0ea5e9;  
+    --bg-light: #f8fafc;     /* Latar belakang halaman abu-abu sangat muda */
+    --white: #ffffff;
+    --text-dark: #1e293b;    /* Hitam pekat untuk tulisan */
+    --text-muted: #64748b;   /* Abu-abu untuk deskripsi */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR STYLE (Tetap Biru Gelap) --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--primary-dark);
+    color: var(--white);
+    height: 100vh;
+    position: fixed;
+    padding: 30px 20px;
+    z-index: 1000;
+}
+
+.brand { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
+.logo-icon { 
+    background-color: var(--accent-blue); 
+    width: 45px; height: 45px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.nav-links { display: flex; flex-direction: column; gap: 8px; }
+.nav-item {
+    display: flex; align-items: center; gap: 15px; padding: 14px 18px;
+    color: rgba(255, 255, 255, 0.7); text-decoration: none; border-radius: 14px;
+    transition: 0.3s; font-weight: 500;
+}
+
+.nav-item.active { 
+    background-color: var(--accent-blue); color: white;
+}
+
+/* --- MAIN CONTENT --- */
+.main-content { margin-left: 260px; flex-grow: 1; }
+
+/* HEADER: SEKARANG PUTIH & TULISAN HITAM */
+.header-section {
+    background: var(--white); /* Ganti dari biru ke putih */
+    color: var(--text-dark);  
+    padding: 50px 50px 20px 50px; /* Rapat ke bawah */
+    border-bottom: 1px solid #e2e8f0; /* Garis tipis pemisah */
+}
+
+.header-section h1 { 
+    font-size: 36px; 
+    font-weight: 800; 
+    margin-bottom: 8px;
+    color: var(--text-dark); /* Tulisan hitam */
+}
+
+.header-section p {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+.back-link { 
+    color: var(--accent-blue); 
+    text-decoration: none; 
+    font-size: 14px; 
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* --- GALLERY CONTAINER --- */
+.gallery-container { 
+    padding: 30px 50px 60px 50px; /* Jarak pas untuk grid */
+    max-width: 1350px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Kolom seperti Berita */
+    gap: 25px;
+}
+
+.photo-card {
+    background: white; 
+    border-radius: 20px; 
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Shadow halus agar bersih */
+    border: 1px solid #f1f5f9;
+    transition: 0.3s ease;
+}
+
+.photo-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Batas Gambar Agar Tidak Raksasa */
+.card-image { width: 100%; height: 220px; overflow: hidden; position: relative; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.category-badge {
+    position: absolute; bottom: 12px; left: 12px;
+    background: #f1f5f9; color: var(--text-dark); /* Badge lebih soft */
+    padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700;
+}
+
+.photo-info { padding: 20px; }
+.photo-info h3 { font-size: 18px; color: var(--text-dark); margin-bottom: 6px; font-weight: 700; }
+.photo-info p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .sidebar { left: -260px; }
+    .main-content { margin-left: 0; }
+    .header-section { padding: 40px 20px 20px; }
+    .gallery-container { padding: 20px 20px 40px; }
+    .photo-grid { grid-template-columns: 1fr; }
+}

@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeri Ekskul - SMP Negeri 6 Purwakarta</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="galeri.css">
+    <link rel="stylesheet" href="galeri-ekskul.css">
 </head>
-
 <body>
 
     <aside class="sidebar" id="sidebar">
         <div class="brand">
             <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
-            <div class="brand-text"><strong>SMP Negeri 6</strong><small>Purwakarta</small></div>
+            <div class="brand-text">
+                <strong>SMP Negeri 6</strong>
+                <small>Purwakarta</small>
+            </div>
         </div>
         <nav class="nav-links">
             <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
@@ -30,69 +31,55 @@
 
     <main class="main-content">
         <header class="header-section">
-            <a href="galeri.html" style="color: white; text-decoration: none; font-size: 14px; opacity: 0.8;">
-                <i class="fas fa-arrow-left"></i> Kembali ke Kategori
-            </a>
-            <h1 style="margin-top: 15px;">Ekstrakurikuler</h1>
-            <p>Kegiatan pengembangan bakat dan minat siswa</p>
+            <div class="header-content">
+                <a href="galeri.html" class="back-link"><i class="fas fa-arrow-left"></i> Kembali</a>
+                <h1>Ekstrakurikuler</h1>
+                <p>Kegiatan pengembangan bakat dan minat siswa</p>
+            </div>
         </header>
 
         <div class="gallery-container">
-            <div class="photo-grid">
-                <div class="photo-card">
-                    <img src="p1.jpg" alt="Pramuka">
-                    <div class="photo-info">
-                        <h3>Pramuka</h3>
-                    </div>
-                </div>
-                <div class="photo-card">
-                    <img src="p2.jpg" alt="Paskibra">
-                    <div class="photo-info">
-                        <h3>Paskibra</h3>
-                    </div>
-                </div>
-                <div class="photo-card">
-                    <img src="p3.jpg" alt="Kesenian">
-                    <div class="photo-info">
-                        <h3>Kesenian</h3>
-                    </div>
-                </div>
-                <div class="photo-card">
-                    <img src="p4.jpg" alt="PMR">
-                    <div class="photo-info">
-                        <h3>PMR</h3>
-                    </div>
-                </div>
-                <div class="photo-card">
-                    <img src="p5.jpg" alt="Perisai Diri">
-                    <div class="photo-info">
-                        <h3>Perisai Diri</h3>
-                    </div>
-                </div>
-                <div class="photo-card">
-                    <img src="p6.jpg" alt="Olahraga">
-                    <div class="photo-info">
-                        <h3>Olahraga</h3>
-                    </div>
-                </div>
+            <div class="photo-grid" id="ekskul-grid">
+                <div class="loading-state">Memuat data...</div>
             </div>
         </div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sidebar');
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
+        const SB_URL = "https://pgsiavnkxrpeyvtmtglp.supabase.co";
+        const SB_KEY = "sb_publishable_jjVemBz_ymH0CCbJhvbaKg_R1yFD6ka";
+        const _supabase = supabase.createClient(SB_URL, SB_KEY);
+
+        async function loadEkskul() {
+            const grid = document.getElementById('ekskul-grid');
+            try {
+                const { data, error } = await _supabase
+                    .from('ekstrakulikuler')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+                grid.innerHTML = '';
+
+                data.forEach(item => {
+                    grid.innerHTML += `
+                        <div class="photo-card">
+                            <div class="card-image">
+                                <img src="${item.url_gambar}" alt="${item.nama_ekskul}">
+                                <span class="category-badge">Ekskul</span>
+                            </div>
+                            <div class="photo-info">
+                                <h3>${item.nama_ekskul}</h3>
+                                <p>${item.description || 'Kegiatan siswa SMPN 6 Purwakarta.'}</p>
+                            </div>
+                        </div>`;
+                });
+            } catch (err) {
+                grid.innerHTML = `<p>Gagal memuat data.</p>`;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadEkskul);
     </script>
-
-    <!-- Chatbot Integration -->
-    <link rel="stylesheet" href="chatbot.css">
-    <script src="chatbot.js"></script>
 </body>
-
 </html>

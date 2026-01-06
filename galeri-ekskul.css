@@ -1,0 +1,96 @@
+/* --- VARIABLES SESUAI REQUEST --- */
+:root {
+    --primary-dark: #0b2e7a;
+    --accent-blue: #0ea5e9;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+    --text-main: #1e293b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    display: flex;
+}
+
+/* --- SIDEBAR STYLE (MATCHING IMAGE) --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--primary-dark);
+    color: var(--white);
+    height: 100vh;
+    position: fixed;
+    padding: 30px 20px;
+    z-index: 1000;
+}
+
+.brand { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
+.logo-icon { 
+    background-color: var(--accent-blue); 
+    width: 45px; height: 45px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.nav-links { display: flex; flex-direction: column; gap: 8px; }
+.nav-item {
+    display: flex; align-items: center; gap: 15px; padding: 14px 18px;
+    color: rgba(255, 255, 255, 0.7); text-decoration: none; border-radius: 14px;
+    transition: 0.3s; font-weight: 500;
+}
+
+.nav-item.active { 
+    background-color: var(--accent-blue); color: white;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+/* --- MAIN CONTENT & HEADER (DIRAPATKAN) --- */
+.main-content { margin-left: 260px; flex-grow: 1; }
+
+.header-section {
+    background: linear-gradient(135deg, #1040a3 0%, #0ea5e9 100%);
+    color: white;
+    padding: 40px 50px; /* Diperkecil dari 80px agar rapat */
+}
+
+.header-section h1 { font-size: 32px; font-weight: 800; }
+.back-link { color: white; text-decoration: none; font-size: 13px; opacity: 0.8; display: block; margin-bottom: 5px; }
+
+/* --- GRID CARDS (MIRIP BERITA) --- */
+.gallery-container { padding: 30px 50px; }
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Kolom seperti Berita */
+    gap: 25px;
+}
+
+.photo-card {
+    background: white; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s;
+    border: 1px solid #f1f5f9;
+}
+
+.card-image { width: 100%; height: 200px; overflow: hidden; position: relative; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.category-badge {
+    position: absolute; bottom: 12px; left: 12px;
+    background: #fef9c3; color: #854d0e;
+    padding: 4px 10px; border-radius: 10px; font-size: 11px; font-weight: 700;
+}
+
+.photo-info { padding: 20px; }
+.photo-info h3 { font-size: 18px; color: var(--text-main); margin-bottom: 5px; }
+.photo-info p { font-size: 14px; color: #64748b; line-height: 1.5; }
+
+.photo-card:hover { transform: translateY(-8px); }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1100px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+    .sidebar { left: -260px; }
+    .main-content { margin-left: 0; }
+    .photo-grid { grid-template-columns: 1fr; }
+}
