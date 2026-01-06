@@ -33,19 +33,19 @@ async function fetchData() {
         const { data, error } = await _supabase.from(currentTable).select('*').order('created_at', { ascending: false });
         if (error) throw error;
         
-        allData = data;
+        allData = data; // Simpan ke variabel global untuk proses Edit
         list.innerHTML = data.length === 0 ? '<p style="text-align:center; padding: 20px;">Belum ada data.</p>' : '';
 
         data.forEach(item => {
             let title = "";
-            let img = item.url_gambar; // Konsisten menggunakan url_gambar
+            let img = item.url_gambar;
 
             if (currentTable === 'berita') {
                 title = item.judul;
             } else if (currentTable === 'fasilitas') {
                 title = item.nama_fasilitas; 
             } else if (currentTable === 'ekstrakulikuler') {
-                title = item.nama_ekskul; // Menggunakan nama_ekskul
+                title = item.nama_ekskul; 
             }
 
             list.innerHTML += `
@@ -56,8 +56,8 @@ async function fetchData() {
                         <h3>${title || 'Tanpa Nama'}</h3>
                     </div>
                     <div class="card-actions">
-                        <button onclick="openEditModal('${item.id}')" class="btn-action btn-edit"><i class="fas fa-edit"></i></button>
-                        <button onclick="deleteData('${item.id}')" class="btn-action btn-del"><i class="fas fa-trash"></i></button>
+                        <button onclick="openEditModal('${item.id}')" class="btn-action btn-edit"><i class="fas fa-edit"></i> Edit</button>
+                        <button onclick="deleteData('${item.id}')" class="btn-action btn-del"><i class="fas fa-trash"></i> Hapus</button>
                     </div>
                 </div>`;
         });
@@ -66,12 +66,12 @@ async function fetchData() {
     }
 }
 
-// 3. Upload Gambar (Arahkan ke bucket yang benar)
+// 3. Upload Gambar
 async function uploadImg(file) {
     const bucketMap = {
         'berita': 'foto_berita',
         'fasilitas': 'foto_fasilitas',
-        'ekstrakulikuler': 'foto-ekskul' // Sesuai nama bucket di screenshot Storage Anda
+        'ekstrakulikuler': 'foto-ekskul'
     };
     
     const targetBucket = bucketMap[currentTable];
@@ -90,14 +90,18 @@ async function uploadImg(file) {
 document.getElementById('mainForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('btnSubmit');
-    btn.disabled = true; btn.innerText = "Sedang Menyimpan...";
+    const id = document.getElementById('f_id').value; // Ambil ID jika ada
+    
+    btn.disabled = true; 
+    btn.innerText = "Sedang Menyimpan...";
 
     try {
         const file = document.getElementById('f_file').files[0];
         let url = document.getElementById('current_img_url').value;
+        
+        // Jika ada file baru, upload. Jika tidak, pakai URL lama
         if (file) url = await uploadImg(file);
 
-        const id = document.getElementById('f_id').value;
         let payload = {};
 
         if (currentTable === 'berita') {
@@ -115,7 +119,6 @@ document.getElementById('mainForm').addEventListener('submit', async (e) => {
                 url_gambar: url 
             };
         } else if (currentTable === 'ekstrakulikuler') {
-            // SAMA PERSIS DENGAN FASILITAS
             payload = { 
                 nama_ekskul: document.getElementById('f_judul').value, 
                 description: document.getElementById('f_isi').value, 
@@ -123,19 +126,81 @@ document.getElementById('mainForm').addEventListener('submit', async (e) => {
             };
         }
 
-        const { error } = id ? await _supabase.from(currentTable).update(payload).eq('id', id) 
-                            : await _supabase.from(currentTable).insert([payload]);
+        let result;
+        if (id) {
+            // UPDATE: Jika ID ada
+            result = await _supabase.from(currentTable).update(payload).eq('id', id);
+        } else {
+            // INSERT: Jika ID kosong
+            result = await _supabase.from(currentTable).insert([payload]);
+        }
         
-        if (error) throw error;
+        if (result.error) throw result.error;
 
         alert("Data berhasil disimpan!");
-        closeModal(); fetchData();
+        closeModal(); 
+        fetchData();
     } catch (err) {
         alert("Gagal menyimpan: " + err.message);
+        console.error(err);
     } finally {
-        btn.disabled = false; btn.innerText = "Simpan Data";
+        btn.disabled = false; 
+        btn.innerText = "Simpan Data";
     }
 });
+
+// 5. Fungsi Edit (Populasi Data ke Modal)
+function openEditModal(id) {
+    // Cari data di array allData berdasarkan ID
+    const item = allData.find(d => d.id == id);
+    if (!item) {
+        alert("Data tidak ditemukan!");
+        return;
+    }
+
+    // Reset dan siapkan modal
+    openAddModal(); 
+    document.getElementById('modalTitle').innerText = "Edit " + currentTable;
+    
+    // Isi ID ke hidden input (PENTING!)
+    document.getElementById('f_id').value = item.id;
+    document.getElementById('current_img_url').value = item.url_gambar || "";
+    
+    // Mapping data ke form
+    if (currentTable === 'berita') {
+        document.getElementById('f_judul').value = item.judul || "";
+        document.getElementById('f_isi').value = item.isi_lengkap || "";
+        document.getElementById('f_kategori').value = item.kategori || "";
+        document.getElementById('f_ringkasan').value = item.ringkasan || "";
+    } else if (currentTable === 'fasilitas') {
+        document.getElementById('f_judul').value = item.nama_fasilitas || "";
+        document.getElementById('f_isi').value = item.description || "";
+    } else if (currentTable === 'ekstrakulikuler') {
+        document.getElementById('f_judul').value = item.nama_ekskul || "";
+        document.getElementById('f_isi').value = item.description || "";
+    }
+    
+    // Preview gambar jika ada
+    if(item.url_gambar) { 
+        document.getElementById('imgPreview').src = item.url_gambar; 
+        document.getElementById('imgPreview').style.display = 'block'; 
+    }
+}
+
+// 6. Fungsi Hapus
+async function deleteData(id) {
+    if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+        try {
+            const { error } = await _supabase.from(currentTable).delete().eq('id', id);
+            if(error) throw error;
+            
+            alert("Data berhasil dihapus");
+            fetchData(); // Refresh list
+        } catch (err) {
+            alert("Gagal menghapus: " + err.message);
+        }
+    }
+}
 
 // --- Fungsi Modal & UI ---
 function openAddModal() {
@@ -149,7 +214,6 @@ function openAddModal() {
     document.getElementById('groupKategori').style.display = isBerita ? 'block' : 'none';
     document.getElementById('groupRingkasan').style.display = isBerita ? 'block' : 'none';
     
-    // Penyesuaian Label Form
     if (currentTable === 'berita') {
         document.getElementById('labelJudul').innerText = "Judul Berita";
         document.getElementById('labelIsi').innerText = "Isi Berita";
@@ -160,41 +224,6 @@ function openAddModal() {
     
     document.getElementById('modalTitle').innerText = "Tambah " + currentTable;
     document.getElementById('formModal').style.display = 'flex';
-}
-
-function openEditModal(id) {
-    const item = allData.find(d => d.id == id);
-    if (!item) return;
-
-    openAddModal();
-    document.getElementById('f_id').value = item.id;
-    document.getElementById('current_img_url').value = item.url_gambar;
-    
-    if (currentTable === 'berita') {
-        document.getElementById('f_judul').value = item.judul;
-        document.getElementById('f_isi').value = item.isi_lengkap;
-        document.getElementById('f_kategori').value = item.kategori;
-        document.getElementById('f_ringkasan').value = item.ringkasan;
-    } else if (currentTable === 'fasilitas') {
-        document.getElementById('f_judul').value = item.nama_fasilitas;
-        document.getElementById('f_isi').value = item.description;
-    } else if (currentTable === 'ekstrakulikuler') {
-        document.getElementById('f_judul').value = item.nama_ekskul;
-        document.getElementById('f_isi').value = item.description;
-    }
-    
-    if(item.url_gambar) { 
-        document.getElementById('imgPreview').src = item.url_gambar; 
-        document.getElementById('imgPreview').style.display = 'block'; 
-    }
-}
-
-async function deleteData(id) {
-    if (confirm("Hapus data ini?")) {
-        const { error } = await _supabase.from(currentTable).delete().eq('id', id);
-        if(error) alert(error.message);
-        fetchData();
-    }
 }
 
 function closeModal() { document.getElementById('formModal').style.display = 'none'; }

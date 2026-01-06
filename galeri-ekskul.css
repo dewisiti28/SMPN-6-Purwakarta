@@ -49,13 +49,13 @@ body {
 .main-content { margin-left: 260px; flex-grow: 1; }
 
 .header-section {
-    background: linear-gradient(135deg, #1040a3 0%, #0ea5e9 100%);
-    color: white;
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    color: rgb(0, 0, 0);
     padding: 40px 50px; /* Diperkecil dari 80px agar rapat */
 }
 
 .header-section h1 { font-size: 32px; font-weight: 800; }
-.back-link { color: white; text-decoration: none; font-size: 13px; opacity: 0.8; display: block; margin-bottom: 5px; }
+.back-link { color: rgb(0, 0, 0); text-decoration: none; font-size: 13px; opacity: 0.8; display: block; margin-bottom: 5px; }
 
 /* --- GRID CARDS (MIRIP BERITA) --- */
 .gallery-container { padding: 30px 50px; }
