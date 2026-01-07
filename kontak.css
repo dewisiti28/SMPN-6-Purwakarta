@@ -141,6 +141,21 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
+/* Mengatur ukuran gambar logo di sidebar */
+.logo-icon img {
+    width: 100%;       /* Mengikuti lebar kotak (45px) */
+    height: 100%;      /* Mengikuti tinggi kotak (45px) */
+    object-fit: contain; /* Agar gambar tidak gepeng/terpotong */
+    padding: 5px;      /* Memberi sedikit ruang napas di dalam kotak */
+}
+
+/* Jika kotak birunya mau dihilangkan dan hanya muncul logonya saja: */
+.logo-icon {
+    background-color: white; /* Ubah dari biru ke transparan */
+    width: 50px;                   /* Sesuaikan ukuran jika perlu */
+    height: 50px;
+}
+
 .icon-box {
     width: 70px;
     height: 70px;
